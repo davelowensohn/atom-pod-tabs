@@ -17,71 +17,71 @@ module.exports = AtomPodTabs =
     console.log 'AtomPodTabs was toggled!'
     @renameTabs()
 
+  myCallback: ->
+    console.log 'Coffeescript makes me feel stupid'
+
   renameTabs: ->
-    # console.log 'renameTabs!'
 
     # Process currently open tabs & set up observer for new ones
     # atom.workspace.observePaneItems () ->
-    #   console.log 'observer firing'
-    #   tabArray = document.getElementsByClassName('title')
-    #   podCruft = '/lib/'
-    #
-    #   for aTab, index in tabArray
-    #     fileName = aTab.dataset.name
-    #     filePath = aTab.dataset.path
-    #
-    #     if (filePath.search ///#{podCruft}///) != -1
-    #       splitName = filePath.split ///#{podCruft}///
-    #       displayName = splitName[...].pop()
-    #       aTab.textContent = displayName
-    #       # console.log 'splitName: ' + splitName
-    #       # console.log 'displayName: ' + displayName
-    #     else
-    #       aTab.textContent = 'fileName'
-
-    # Process currently open tabs & set up observer for new ones
     atom.workspace.observeActivePaneItem () ->
-
-      # DRY this up when I know how to execute callbacks in coffeescript
+      # @myCallback()
+      # DRY this up once I know how to execute callbacks in coffeescript
       tabArray = document.getElementsByClassName('title')
-      podCruft = '/lib/'
+      podCruft = '/app/components/'
 
       thisEditor = atom.workspace.getActivePaneItem()
       thisFile = thisEditor?.buffer.file
       thisFilePath = thisFile?.path
 
-      if (thisFilePath.search ///#{podCruft}///) != -1
-        document.title = thisFile + ' (component)'
-        console.log 'item: ' + thisFilePath
+      if thisEditor
 
-      for aTab, index in tabArray
-        fileName = aTab.dataset.name
-        filePath = aTab.dataset.path
+        if (thisFilePath.search ///#{podCruft}///) != -1
+          thisSplitName = thisFilePath.split ///#{podCruft}///
+          thisDisplayName = thisSplitName[...].pop()
+          document.title = thisDisplayName
 
-        if (filePath.search ///#{podCruft}///) != -1
-          splitName = filePath.split ///#{podCruft}///
-          displayName = splitName[...].pop()
-          aTab.textContent = displayName
-          # console.log 'splitName: ' + splitName
-          # console.log 'displayName: ' + displayName
-        else
-          aTab.textContent = 'fileName'
+        for aTab, index in tabArray
+          fileName = aTab.dataset.name
+          filePath = aTab.dataset.path
 
+          if (filePath.search ///#{podCruft}///) != -1
+            splitName = filePath.split ///#{podCruft}///
+            displayName = splitName[...].pop()
+            aTab.textContent = displayName
+            # console.log 'splitName: ' + splitName
+            # console.log 'displayName: ' + displayName
+          else
+            aTab.textContent = fileName
+
+    # Re-process remaining open tabs when one is closed
+    # Necessary step so things don't get overwritten by atom/tabs
     atom.workspace.onDidDestroyPaneItem () ->
-      console.log 'destructor'
-
+      # @myCallback()
+      # DRY this up once I know how to execute callbacks in coffeescript
       tabArray = document.getElementsByClassName('title')
-      podCruft = '/lib/'
+      podCruft = '/app/components/'
 
-      for aTab, index in tabArray
-        fileName = aTab.dataset.name
-        filePath = aTab.dataset.path
+      thisEditor = atom.workspace.getActivePaneItem()
+      thisFile = thisEditor?.buffer.file
+      thisFilePath = thisFile?.path
 
-        if (filePath.search ///#{podCruft}///) != -1
-          splitName = filePath.split ///#{podCruft}///
-          displayName = splitName[...].pop()
-          aTab.textContent = displayName
-          # console.log 'splitName: ' + splitName
-          # console.log 'displayName: ' + displayName
-        else
-          aTab.textContent = 'fileName'
+      if thisEditor
+
+        if (thisFilePath.search ///#{podCruft}///) != -1
+          thisSplitName = thisFilePath.split ///#{podCruft}///
+          thisDisplayName = thisSplitName[...].pop()
+          document.title = thisDisplayName
+
+        for aTab, index in tabArray
+          fileName = aTab.dataset.name
+          filePath = aTab.dataset.path
+
+          if (filePath.search ///#{podCruft}///) != -1
+            splitName = filePath.split ///#{podCruft}///
+            displayName = splitName[...].pop()
+            aTab.textContent = displayName
+            # console.log 'x-splitName: ' + splitName
+            # console.log 'x-displayName: ' + displayName
+          else
+            aTab.textContent = fileName
