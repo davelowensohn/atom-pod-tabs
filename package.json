@@ -1,0 +1,18 @@
+{
+  "name": "atom-pod-tabs",
+  "main": "./lib/atom-pod-tabs",
+  "version": "0.0.0",
+  "description": "Better tabs for working with Ember.js pods",
+  "keywords": [
+  ],
+  "activationCommands": {
+    "atom-workspace": "atom-pod-tabs:toggle"
+  },
+  "repository": "https://github.com/atom/atom-pod-tabs",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+  }
+}
