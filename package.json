@@ -8,7 +8,7 @@
   "activationCommands": {
     "atom-workspace": "atom-pod-tabs:toggle"
   },
-  "repository": "https://github.com/atom/atom-pod-tabs",
+  "repository": "https://github.com/davelowensohn/atom-pod-tabs",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
