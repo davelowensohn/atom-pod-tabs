@@ -2,6 +2,8 @@
 
 ### Better tabs for working with Ember.js pods
 
+[DEPRECATED / ABANDONED: This isn't particularly stable & https://atom.io/packages/ember-tabs does a much better job of the same thing.]
+
 ![This either does or doesn't make you smile.](/resources/atom-pod-tabs-screencap.gif)
 
 I just started a new Ember.js project using the pod directory structure, and found it much harder to navigate around Atom when all the various components share filenames (multiple instances of `controller.js`, `route.js`, `template.hbs` instead of `component1.js`, `component1.hbs`, `component2.js`, `component2.hbs`, etc). Tabs are harder to jump between, it's harder to know where you are or what you're working on at a glance. You can opt to display the entire project path, but this only creates a new problem, as the part of the path you care about is almost always pushed out of the tab by something like `/User/yourname/github/app/components/...`
